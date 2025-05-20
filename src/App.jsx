@@ -28,7 +28,7 @@ function App() {
       <footer
         style={{ textAlign: "center", padding: "1rem", background: "#f2f2f2" }}
       >
-        <p>© 2025 Oficina Mecânica Silva. Todos os direitos reservados.</p>
+        <p>© 2025 DAS Auto Solutions. Todos os direitos reservados.</p>
       </footer>
     </>
   );
