@@ -1,10 +1,11 @@
 import React from "react";
 
+import CarService from "../assets/car-service.jpeg";
 import carroOficinaNeon from "../assets/carro-oficina-neon.jpeg";
 import mecanicService from "../assets/mecanic-service.jpeg";
+import Mecanic from "../assets/mecanic.jpeg";
 
-
-const imagens = [carroOficinaNeon, mecanicService];
+const imagens = [CarService, carroOficinaNeon, mecanicService, Mecanic];
 
 const Galeria = () => (
   <section id="galeria" style={{ padding: "60px 0", background: "#f7f7f7" }}>
@@ -24,7 +25,13 @@ const Galeria = () => (
             key={idx}
             src={src}
             alt={`Peça ${idx + 1}`}
-            style={{ borderRadius: 8, boxShadow: "0 2px 8px rgba(0,0,0,0.10)" }}
+            style={{
+              width: "200px", // largura fixa
+              height: "150px", // altura fixa
+              objectFit: "cover", // recorta a imagem para preencher o espaço
+              borderRadius: 8,
+              boxShadow: "0 2px 8px rgba(0,0,0,0.10)",
+            }}
           />
         ))}
       </div>
