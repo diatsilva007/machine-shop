@@ -1,19 +1,25 @@
 body {
   margin: 0;
-  font-family: 'Roboto', sans-serif;
+  font-family: "Roboto", sans-serif;
   background-color: #f5f5f5;
   color: #333;
+  overflow-x: hidden;
 }
 
-html, body, #root {
+html,
+body,
+#root {
   width: 100%;
   min-height: 100%;
   margin: 0;
   padding: 0;
+  overflow-x: hidden;
 }
 
-h1, h2, h3 {
-  font-family: 'Bebas Neue', sans-serif;
+h1,
+h2,
+h3 {
+  font-family: "Bebas Neue", sans-serif;
   letter-spacing: 1px;
 }
 
@@ -199,7 +205,7 @@ footer {
   position: fixed;
   bottom: 28px;
   right: 28px;
-  z-index: 1000;
+  z-index: 9999; /* aumente o z-index */
   width: 56px;
   height: 56px;
   background: #25d366;
@@ -257,13 +263,154 @@ footer {
 
 @media (max-width: 600px) {
   .whatsapp-float-btn {
-    width: 46px;
-    height: 46px;
-    bottom: 16px;
-    right: 16px;
+    width: 46px !important;
+    height: 46px !important;
+    bottom: 16px !important;
+    right: 16px !important;
+    z-index: 9999 !important;
+    display: flex !important; /* garanta que está visível */
   }
   .whatsapp-float-btn .tooltip {
     font-size: 12px;
     right: 54px;
+  }
+}
+
+/* Responsividade geral */
+@media (max-width: 1100px) {
+  .header-container {
+    max-width: 100%;
+    padding: 0.7rem 1rem;
+  }
+  .logo {
+    font-size: 1.1rem;
+  }
+  .nav {
+    gap: 1rem;
+  }
+  .header-container {
+    flex-direction: row;
+  }
+  .galeria-container,
+  .depoimentos-container,
+  .sobre-container,
+  .servicos-container {
+    max-width: 98vw !important;
+    padding: 0 1vw !important;
+  }
+}
+
+@media (max-width: 800px) {
+  h1 {
+    font-size: 2rem !important;
+  }
+  h2 {
+    font-size: 1.4rem !important;
+  }
+  .header-container {
+    padding: 0.7rem 0.5rem;
+  }
+  .nav {
+    position: absolute;
+    top: 60px;
+    right: 0;
+    background: #222;
+    flex-direction: column;
+    width: 180px;
+    align-items: flex-start;
+    padding: 1rem 1.5rem;
+    gap: 1rem;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.12);
+    transform: translateX(100%);
+    opacity: 0;
+    pointer-events: none;
+    transition: transform 0.3s, opacity 0.3s;
+  }
+  .nav.open {
+    transform: translateX(0);
+    opacity: 1;
+    pointer-events: auto;
+  }
+  .hamburger {
+    display: flex;
+  }
+  .galeria-container,
+  .depoimentos-container,
+  .sobre-container,
+  .servicos-container {
+    padding: 0 2vw !important;
+  }
+}
+
+@media (max-width: 600px) {
+  body {
+    font-size: 15px;
+  }
+  h1 {
+    font-size: 1.3rem !important;
+  }
+  h2 {
+    font-size: 1.1rem !important;
+  }
+  .header-container {
+    flex-direction: row; /* Mantenha em linha */
+    align-items: center;
+    justify-content: space-between; /* Espaço entre logo e menu/hamburguer */
+    padding: 0.5rem 0.3rem;
+  }
+  .logo {
+    font-size: 1rem;
+  }
+  .nav {
+    width: 100%;
+    left: 0;
+    right: 0;
+    top: 48px;
+    padding: 1rem 2vw;
+  }
+  section,
+  .galeria-container,
+  .depoimentos-container,
+  .sobre-container,
+  .servicos-container {
+    padding: 32px 0 !important;
+  }
+  img {
+    max-width: 100%;
+    height: auto !important;
+  }
+  .whatsapp-float-btn {
+    width: 46px !important;
+    height: 46px !important;
+    bottom: 16px !important;
+    right: 16px !important;
+  }
+  .whatsapp-float-btn .tooltip {
+    font-size: 12px;
+    right: 54px;
+  }
+}
+
+/* Ajuste para galeria de imagens */
+@media (max-width: 700px) {
+  .galeria-container div,
+  .galeria-container {
+    flex-direction: column !important;
+    align-items: center !important;
+    gap: 1rem !important;
+  }
+  .galeria-container img {
+    width: 90vw !important;
+    height: auto !important;
+    max-width: 350px !important;
+  }
+}
+
+/* Ajuste para iframe do mapa */
+@media (max-width: 600px) {
+  iframe {
+    width: 98vw !important;
+    min-width: 180px !important;
+    height: 180px !important;
   }
 }
