@@ -1,11 +1,10 @@
 import React from "react";
 
-const imagens = [
-  "https://via.placeholder.com/220x140?text=Peça+1",
-  "https://via.placeholder.com/220x140?text=Peça+2",
-  "https://via.placeholder.com/220x140?text=Peça+3",
-  "https://via.placeholder.com/220x140?text=Peça+4",
-];
+import carroOficinaNeon from "../assets/carro-oficina-neon.jpeg";
+import mecanicService from "../assets/mecanic-service.jpeg";
+
+
+const imagens = [carroOficinaNeon, mecanicService];
 
 const Galeria = () => (
   <section id="galeria" style={{ padding: "60px 0", background: "#f7f7f7" }}>
