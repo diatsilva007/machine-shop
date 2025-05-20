@@ -389,6 +389,9 @@ footer {
     font-size: 12px;
     right: 54px;
   }
+  footer {
+    padding-bottom: 70px !important; /* espaço para o botão flutuante */
+  }
 }
 
 /* Ajuste para galeria de imagens */
