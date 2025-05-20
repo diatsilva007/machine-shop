@@ -13,7 +13,7 @@ const Localizacao = () => (
       >
         <iframe
           title="Mapa"
-          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3656.123456789!2d-46.656574684475!3d-23.561399984678!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x94ce59c8b1b1b1b1%3A0x123456789abcdef!2sRua+Exemplo%2C+123+-+Centro!5e0!3m2!1spt-BR!2sbr!4v1680000000000"
+          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3706.166381198471!2d-44.303738772885005!3d-21.73507449705236!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x9f0c3edd04dfe1%3A0x4e71dd835cb39759!2sChrist%20the%20lookout!5e0!3m2!1sen!2sbr!4v1747782755233!5m2!1sen!2sbr"
           width="100%"
           height="300"
           style={{ border: 0, borderRadius: 8 }}
