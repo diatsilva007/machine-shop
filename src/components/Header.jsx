@@ -16,7 +16,7 @@ const Header = () => {
   const handleNavClick = (e, href) => {
     e.preventDefault();
     setMenuOpen(false);
-    setActive(href);
+    setActive("");
     const section = document.querySelector(href);
     if (section) {
       window.scrollTo({
