@@ -70,11 +70,12 @@ a {
 
 /* Header avançado */
 .header-sticky {
-  position: sticky;
+  position: fixed;
   top: 0;
+  left: 0;
   width: 100%;
+  z-index: 10000;
   background: #222;
-  z-index: 100;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
   transition: background 0.3s;
 }
@@ -106,8 +107,7 @@ a {
   border-bottom: 2px solid transparent;
   transition: color 0.2s, border 0.2s;
 }
-.nav a:hover,
-.nav a.active {
+.nav a:hover {
   color: #25d366;
   border-bottom: 2px solid #25d366;
 }
@@ -138,7 +138,8 @@ a {
     background: #222;
     flex-direction: column;
     width: 180px;
-    align-items: flex-start;
+    align-items: flex-end;
+    text-align: right;
     padding: 1rem 1.5rem;
     gap: 1rem;
     box-shadow: 0 4px 16px rgba(0, 0, 0, 0.12);
@@ -169,7 +170,7 @@ a {
 main {
   max-width: 900px;
   margin: auto;
-  padding: 2rem 1rem;
+  padding: 5rem 1rem 2rem 1rem; /* 5rem para compensar o header fixo */
 }
 
 section {
@@ -311,25 +312,45 @@ footer {
     padding: 0.7rem 0.5rem;
   }
   .nav {
-    position: absolute;
-    top: 60px;
+    position: fixed;
+    top: 0;
     right: 0;
-    background: #222;
+    left: 0;
+    width: 100vw;
+    max-height: 90vh; /* Altura máxima de 90% da tela */
+    background: rgba(34, 34, 34, 0.98);
     flex-direction: column;
-    width: 180px;
-    align-items: flex-start;
-    padding: 1rem 1.5rem;
-    gap: 1rem;
-    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.12);
+    align-items: stretch;
+    justify-content: flex-start;
+    text-align: right;
+    padding: 5vw 0 0 0;
+    gap: 0;
+    box-shadow: none;
     transform: translateX(100%);
     opacity: 0;
     pointer-events: none;
     transition: transform 0.3s, opacity 0.3s;
+    z-index: 9998;
+    overflow-y: auto; /* Permite rolar se passar da altura */
   }
   .nav.open {
     transform: translateX(0);
     opacity: 1;
     pointer-events: auto;
+  }
+  .nav a {
+    display: block;
+    width: 100%;
+    padding: 4vw 8vw;
+    padding-right: 6vw; /* Espaço extra à direita */
+    font-size: 4vw;
+    min-height: 48px;
+    text-align: right;
+    border-bottom: 1px solid #333;
+    box-sizing: border-box;
+  }
+  .nav a:last-child {
+    border-bottom: none;
   }
   .hamburger {
     display: flex;
@@ -367,7 +388,23 @@ footer {
     right: 0;
     top: 48px;
     padding: 1rem 2vw;
+    align-items: flex-end;
+    text-align: right;
   }
+
+  .nav a {
+    display: block;
+    width: 100%;
+    padding: 1rem 0.5rem;
+    padding-right: 6vw; /* Mais espaço em telas menores */
+    text-align: right;
+    border-bottom: 1px solid #333;
+    box-sizing: border-box;
+  }
+  .nav a:last-child {
+    border-bottom: none;
+  }
+
   section,
   .galeria-container,
   .depoimentos-container,
