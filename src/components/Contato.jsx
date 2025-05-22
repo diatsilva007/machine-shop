@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 
 const initialState = { nome: "", email: "", mensagem: "" };
+const FORMSPREE_ENDPOINT = "https://formspree.io/f/mgvkbnkd"; // coloque aqui o seu endpoint: Ex: "https://formspree.io/f/xxxxxxxx"
 
 function Contato() {
   const [form, setForm] = useState(initialState);
@@ -32,12 +33,26 @@ function Contato() {
     setEnviando(true);
     setErro("");
     setSucesso("");
-    // Simulação de envio (substitua pelo seu envio real)
-    setTimeout(() => {
-      setEnviando(false);
-      setSucesso("Mensagem enviada com sucesso! Retornaremos em breve.");
-      setForm(initialState);
-    }, 1800);
+    try {
+      const response = await fetch(FORMSPREE_ENDPOINT, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          nome: form.nome,
+          email: form.email,
+          mensagem: form.mensagem,
+        }),
+      });
+      if (response.ok) {
+        setSucesso("Mensagem enviada com sucesso! Retornaremos em breve.");
+        setForm(initialState);
+      } else {
+        setErro("Ocorreu um erro ao enviar. Tente novamente.");
+      }
+    } catch {
+      setErro("Ocorreu um erro ao enviar. Tente novamente.");
+    }
+    setEnviando(false);
   }
 
   return (
