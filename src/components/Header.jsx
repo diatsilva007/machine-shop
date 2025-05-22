@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 
 const links = [
+  { href: "#home", label: "Home" }, // Adicionado link Home
   { href: "#sobre", label: "Sobre" },
   { href: "#servicos", label: "Serviços" },
   { href: "#galeria", label: "Galeria" },
@@ -17,6 +18,10 @@ const Header = () => {
     e.preventDefault();
     setMenuOpen(false);
     setActive("");
+    if (href === "#home") {
+      window.scrollTo({ top: 0, behavior: "smooth" }); // Volta ao topo
+      return;
+    }
     const section = document.querySelector(href);
     if (section) {
       window.scrollTo({
