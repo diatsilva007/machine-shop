@@ -167,6 +167,7 @@ const Galeria = () => {
                 key={idx}
                 src={src}
                 alt={`Peça ${idx + 1}`}
+                loading="lazy"
                 style={{
                   width: "100%",
                   height: "100%",
