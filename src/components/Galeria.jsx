@@ -7,9 +7,23 @@ import Mecanic from "../assets/mecanic.jpeg";
 
 const imagens = [CarService, carroOficinaNeon, mecanicService, Mecanic];
 
+// Hook para detectar responsivamente se é mobile
+function useIsMobile(breakpoint = 800) {
+  const [isMobile, setIsMobile] = useState(window.innerWidth <= breakpoint);
+
+  useEffect(() => {
+    const handleResize = () => setIsMobile(window.innerWidth <= breakpoint);
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, [breakpoint]);
+
+  return isMobile;
+}
+
 const Galeria = () => {
   const [index, setIndex] = useState(0);
   const timeoutRef = useRef(null);
+  const isMobile = useIsMobile(800);
 
   useEffect(() => {
     timeoutRef.current = setTimeout(() => {
@@ -30,12 +44,12 @@ const Galeria = () => {
   // Estilos responsivos para o container da imagem
   const imageContainerStyle = {
     position: "relative",
-    width: "min(90vw, 600px)",
-    height: "min(55vw, 380px)",
+    width: isMobile ? "90vw" : "600px",
+    height: isMobile ? "55vw" : "380px",
     maxWidth: "600px",
     maxHeight: "380px",
-    minWidth: "220px",
-    minHeight: "160px",
+    minWidth: "180px",
+    minHeight: "120px",
     overflow: "hidden",
     borderRadius: 16,
     boxShadow: "0 2px 12px rgba(0,0,0,0.13)",
@@ -43,6 +57,32 @@ const Galeria = () => {
     flexShrink: 0,
     transition: "width 0.3s, height 0.3s",
     margin: "0 12px",
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "center",
+    boxSizing: "border-box",
+  };
+
+  // Estilos para os botões das setas
+  const arrowButtonStyle = {
+    background: "rgba(0,0,0,0.4)",
+    color: "#fff",
+    border: "none",
+    borderRadius: "50%",
+    width: isMobile ? 48 : 36,
+    height: isMobile ? 48 : 36,
+    cursor: "pointer",
+    fontSize: isMobile ? 32 : 22,
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "center",
+    outline: "none",
+    boxShadow: "0 2px 8px rgba(0,0,0,0.15)",
+    margin: isMobile ? "0 12px" : "0 4px",
+    zIndex: 2,
+    transition: "background 0.2s, transform 0.15s",
+    userSelect: "none",
+    touchAction: "manipulation",
   };
 
   return (
@@ -57,57 +97,31 @@ const Galeria = () => {
             gap: 0,
             marginTop: "2rem",
             width: "100%",
+            flexWrap: isMobile ? "wrap" : "nowrap",
           }}
         >
           {/* Botão anterior */}
           <div
-            style={{ display: "flex", alignItems: "center", height: "100%" }}
+            style={{
+              display: "flex",
+              alignItems: "center",
+              height: "100%",
+              marginBottom: isMobile ? 8 : 0,
+            }}
           >
             <button
               onClick={handlePrev}
               aria-label="Anterior"
-              style={{
-                background: "rgba(0,0,0,0.4)",
-                color: "#fff",
-                border: "none",
-                borderRadius: "50%",
-                width: 36,
-                height: 36,
-                cursor: "pointer",
-                fontSize: 22,
-                display: "flex",
-                alignItems: "center",
-                justifyContent: "center",
-                outline: "none",
-                boxShadow: "0 2px 8px rgba(0,0,0,0.15)",
-                margin: "0 4px 0 0",
-              }}
+              style={arrowButtonStyle}
+              tabIndex={0}
+              onTouchStart={handlePrev}
+              onKeyDown={(e) => (e.key === "ArrowLeft" ? handlePrev() : null)}
             >
               &#8592;
             </button>
           </div>
           {/* Container da imagem */}
-          <div
-            style={{
-              position: "relative",
-              width: "100%",
-              maxWidth: "600px",
-              height: "min(56vw, 380px)",
-              minWidth: "180px",
-              minHeight: "120px",
-              margin: "0 auto",
-              overflow: "hidden",
-              borderRadius: 16,
-              boxShadow: "0 2px 12px rgba(0,0,0,0.13)",
-              background: "#eee",
-              flexShrink: 0,
-              display: "flex",
-              alignItems: "center",
-              justifyContent: "center",
-              
-              boxSizing: "border-box",
-            }}
-          >
+          <div style={imageContainerStyle}>
             {imagens.map((src, idx) => (
               <img
                 key={idx}
@@ -116,7 +130,7 @@ const Galeria = () => {
                 style={{
                   width: "100%",
                   height: "100%",
-                  objectFit: "cover", // será sobrescrito pelo CSS no mobile
+                  objectFit: "cover",
                   borderRadius: 16,
                   opacity: idx === index ? 1 : 0,
                   display: idx === index ? "block" : "none",
@@ -124,33 +138,28 @@ const Galeria = () => {
                   zIndex: 1,
                   background: "#eee",
                   pointerEvents: idx === index ? "auto" : "none",
+                  userSelect: "none",
                 }}
+                draggable={false}
               />
             ))}
           </div>
           {/* Botão próximo */}
           <div
-            style={{ display: "flex", alignItems: "center", height: "100%" }}
+            style={{
+              display: "flex",
+              alignItems: "center",
+              height: "100%",
+              marginBottom: isMobile ? 8 : 0,
+            }}
           >
             <button
               onClick={handleNext}
               aria-label="Próxima"
-              style={{
-                background: "rgba(0,0,0,0.4)",
-                color: "#fff",
-                border: "none",
-                borderRadius: "50%",
-                width: 36,
-                height: 36,
-                cursor: "pointer",
-                fontSize: 22,
-                display: "flex",
-                alignItems: "center",
-                justifyContent: "center",
-                outline: "none",
-                boxShadow: "0 2px 8px rgba(0,0,0,0.15)",
-                margin: "0 0 0 4px",
-              }}
+              style={arrowButtonStyle}
+              tabIndex={0}
+              onTouchStart={handleNext}
+              onKeyDown={(e) => (e.key === "ArrowRight" ? handleNext() : null)}
             >
               &#8594;
             </button>
