@@ -1,7 +1,7 @@
-import React, { useState } from "react";
+import React, { useState, useRef, useEffect } from "react";
 
 const links = [
-  { href: "#home", label: "Home" }, // Adicionado link Home
+  { href: "#home", label: "Home" },
   { href: "#sobre", label: "Sobre" },
   { href: "#servicos", label: "Serviços" },
   { href: "#galeria", label: "Galeria" },
@@ -12,6 +12,29 @@ const links = [
 const Header = () => {
   const [menuOpen, setMenuOpen] = useState(false);
   const [active, setActive] = useState("");
+  const navRef = useRef(null);
+
+  // Fecha o menu ao clicar fora
+  useEffect(() => {
+    if (!menuOpen) return;
+    function handleClickOutside(event) {
+      if (
+        navRef.current &&
+        !navRef.current.contains(event.target) &&
+        !event.target.classList.contains("hamburger") &&
+        !event.target.closest(".hamburger")
+      ) {
+        setMenuOpen(false);
+      }
+    }
+
+    document.addEventListener("mousedown", handleClickOutside);
+    document.addEventListener("touchstart", handleClickOutside);
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+      document.removeEventListener("touchstart", handleClickOutside);
+    };
+  }, [menuOpen]);
 
   // Scroll suave e destaque do link ativo
   const handleNavClick = (e, href) => {
@@ -19,7 +42,7 @@ const Header = () => {
     setMenuOpen(false);
     setActive("");
     if (href === "#home") {
-      window.scrollTo({ top: 0, behavior: "smooth" }); // Volta ao topo
+      window.scrollTo({ top: 0, behavior: "smooth" });
       return;
     }
     const section = document.querySelector(href);
@@ -45,7 +68,7 @@ const Header = () => {
           </span>
           <span>DAS Auto Solutions</span>
         </div>
-        <nav className={`nav ${menuOpen ? "open" : ""}`}>
+        <nav ref={navRef} className={`nav ${menuOpen ? "open" : ""}`}>
           {links.map((link) => (
             <a
               key={link.href}
