@@ -114,7 +114,11 @@ const Galeria = () => {
   };
 
   return (
-    <section id="galeria" style={{ padding: "60px 0", background: "#f7f7f7" }}>
+    <section
+      id="galeria"
+      style={{ padding: "60px 0", background: "#f7f7f7" }}
+      aria-label="Galeria de imagens"
+    >
       <div style={{ maxWidth: 900, margin: "0 auto", textAlign: "center" }}>
         <h2>Galeria</h2>
         <div
@@ -154,6 +158,9 @@ const Galeria = () => {
             style={imageContainerStyle}
             onTouchStart={handleTouchStart}
             onTouchEnd={handleTouchEnd}
+            aria-live="polite"
+            role="region"
+            aria-label="Galeria de imagens"
           >
             {imagens.map((src, idx) => (
               <img
@@ -188,6 +195,13 @@ const Galeria = () => {
                   setIndex(idx);
                   pauseAutoplay();
                 }}
+                onKeyDown={(e) => {
+                  if (e.key === "Enter" || e.key === " ") {
+                    setIndex(idx);
+                    pauseAutoplay();
+                  }
+                }}
+                tabIndex={0}
                 style={{
                   width: 12,
                   height: 12,
