@@ -9,7 +9,6 @@ import Depoimentos from "./components/Depoimentos";
 import Contato from "./components/Contato";
 import Localizacao from "./components/Localizacao";
 import WhatsAppButton from "./components/WhatsAppButton";
-import BackToTopButton from "./components/BackToTopButton";
 
 import { FaFacebook, FaInstagram, FaTelegramPlane } from "react-icons/fa";
 import { SiX } from "react-icons/si"; // Twitter (X) icon
@@ -71,7 +70,6 @@ function App() {
         <Localizacao />
       </main>
       <WhatsAppButton />
-      <BackToTopButton />
       <footer
         style={{
           background: "linear-gradient(90deg, #232526 0%, #414345 100%)",
