@@ -56,6 +56,36 @@ function App() {
     };
   }, []);
 
+  useEffect(() => {
+    // Função para scroll suave
+    function handleSmoothScroll(e) {
+      // Só executa para links internos
+      if (
+        e.target.tagName === "A" &&
+        e.target.getAttribute("href") &&
+        e.target.getAttribute("href").startsWith("#")
+      ) {
+        const href = e.target.getAttribute("href");
+        const el = document.querySelector(href);
+        if (el) {
+          e.preventDefault();
+          el.scrollIntoView({ behavior: "smooth", block: "start" });
+        }
+      }
+    }
+
+    // Seleciona o container do footer
+    const footer = document.querySelector("footer");
+    if (footer) {
+      footer.addEventListener("click", handleSmoothScroll);
+    }
+    return () => {
+      if (footer) {
+        footer.removeEventListener("click", handleSmoothScroll);
+      }
+    };
+  }, []);
+
   return (
     <>
       <Header />
