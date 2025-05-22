@@ -25,6 +25,21 @@ const Galeria = () => {
   const timeoutRef = useRef(null);
   const isMobile = useIsMobile(800);
 
+  // --- SWIPE: controle de toque ---
+  const touchStartX = useRef(null);
+
+  const handleTouchStart = (e) => {
+    touchStartX.current = e.touches[0].clientX;
+  };
+
+  const handleTouchEnd = (e) => {
+    if (touchStartX.current === null) return;
+    const deltaX = e.changedTouches[0].clientX - touchStartX.current;
+    if (deltaX > 40) handlePrev(); // Swipe para direita
+    if (deltaX < -40) handleNext(); // Swipe para esquerda
+    touchStartX.current = null;
+  };
+
   useEffect(() => {
     timeoutRef.current = setTimeout(() => {
       setIndex((prev) => (prev + 1) % imagens.length);
@@ -120,8 +135,13 @@ const Galeria = () => {
               &#8592;
             </button>
           </div>
-          {/* Container da imagem */}
-          <div style={imageContainerStyle}>
+
+          {/* Container da imagem com eventos de swipe */}
+          <div
+            style={imageContainerStyle}
+            onTouchStart={handleTouchStart}
+            onTouchEnd={handleTouchEnd}
+          >
             {imagens.map((src, idx) => (
               <img
                 key={idx}
@@ -141,6 +161,29 @@ const Galeria = () => {
                   userSelect: "none",
                 }}
                 draggable={false}
+              />
+            ))}
+          </div>
+
+          <div
+            style={{ display: "flex", justifyContent: "center", marginTop: 12 }}
+          >
+            {imagens.map((_, idx) => (
+              <button
+                key={idx}
+                onClick={() => setIndex(idx)}
+                style={{
+                  width: 12,
+                  height: 12,
+                  borderRadius: "50%",
+                  margin: "0 4px",
+                  border: "none",
+                  background: idx === index ? "#25d366" : "#bbb",
+                  opacity: idx === index ? 1 : 0.5,
+                  cursor: "pointer",
+                  transition: "background 0.2s, opacity 0.2s",
+                }}
+                aria-label={`Ir para imagem ${idx + 1}`}
               />
             ))}
           </div>
