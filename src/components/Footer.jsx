@@ -298,7 +298,16 @@ export default function Footer({ isMobile }) {
           </p>
         </div>
         {/* Links rápidos do rodapé */}
-        <div style={{ minWidth: 180, flex: 1 }}>
+        <div
+          style={{
+            minWidth: 180,
+            flex: 1,
+            display: "flex",
+            flexDirection: "column",
+            alignItems: "center", // centraliza horizontalmente
+            textAlign: "center", // centraliza o texto
+          }}
+        >
           <strong style={{ fontSize: 18, color: "#25d366" }}>
             Links Rápidos
           </strong>
@@ -418,4 +427,3 @@ export default function Footer({ isMobile }) {
     </footer>
   );
 }
-
