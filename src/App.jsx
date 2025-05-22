@@ -23,8 +23,6 @@ function App() {
         <Depoimentos />
         <Contato />
         <Localizacao />
-        <darkMode />
-        <setDarkMode />
       </main>
       <WhatsAppButton />
       <footer
