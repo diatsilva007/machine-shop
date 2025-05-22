@@ -39,6 +39,12 @@ function App() {
           boxShadow: "0 -2px 16px rgba(0,0,0,0.18)",
           borderTopLeftRadius: 24,
           borderTopRightRadius: 24,
+          // Adicione este bloco para responsividade:
+          ...(window.innerWidth < 700
+            ? {
+                padding: "2rem 0.5rem 1rem 0.5rem",
+              }
+            : {}),
         }}
       >
         <div
@@ -47,10 +53,13 @@ function App() {
             margin: "0 auto",
             display: "flex",
             flexWrap: "wrap",
-            justifyContent: "space-between",
-            alignItems: "flex-start",
-            gap: 40,
-            rowGap: 48,
+            justifyContent:
+              window.innerWidth < 700 ? "center" : "space-between",
+            alignItems: window.innerWidth < 700 ? "center" : "flex-start",
+            flexDirection: window.innerWidth < 700 ? "column" : "row",
+            gap: window.innerWidth < 700 ? 28 : 40,
+            rowGap: window.innerWidth < 700 ? 32 : 48,
+            textAlign: window.innerWidth < 700 ? "center" : "left",
           }}
         >
           {/* Coluna 1 */}
@@ -145,6 +154,14 @@ function App() {
                   e.currentTarget.style.background =
                     "linear-gradient(135deg, #1877f3 60%, #fff 100%)";
                 }}
+                onFocus={(e) =>
+                  (e.currentTarget.style.boxShadow =
+                    "0 0 0 4px #25d36680, 0 4px 16px rgba(24,119,243,0.18)")
+                }
+                onBlur={(e) =>
+                  (e.currentTarget.style.boxShadow =
+                    "0 4px 16px rgba(24,119,243,0.18)")
+                }
                 tabIndex={0}
               >
                 <FaFacebook color="#fff" size={28} />
@@ -182,6 +199,14 @@ function App() {
                   e.currentTarget.style.background =
                     "radial-gradient(circle at 30% 110%, #fdc468 0%, #df4996 100%)";
                 }}
+                onFocus={(e) =>
+                  (e.currentTarget.style.boxShadow =
+                    "0 0 0 4px #25d36680, 0 4px 16px rgba(223,73,150,0.18)")
+                }
+                onBlur={(e) =>
+                  (e.currentTarget.style.boxShadow =
+                    "0 4px 16px rgba(223,73,150,0.18)")
+                }
                 tabIndex={0}
               >
                 <FaInstagram color="#fff" size={28} />
@@ -218,6 +243,14 @@ function App() {
                   e.currentTarget.style.background =
                     "linear-gradient(135deg, #229ED9 60%, #fff 100%)";
                 }}
+                onFocus={(e) =>
+                  (e.currentTarget.style.boxShadow =
+                    "0 0 0 4px #25d36680, 0 4px 16px rgba(34,158,217,0.18)")
+                }
+                onBlur={(e) =>
+                  (e.currentTarget.style.boxShadow =
+                    "0 4px 16px rgba(34,158,217,0.18)")
+                }
                 tabIndex={0}
               >
                 <FaTelegramPlane color="#fff" size={28} />
@@ -254,6 +287,14 @@ function App() {
                   e.currentTarget.style.background =
                     "linear-gradient(135deg, #000 60%, #fff 100%)";
                 }}
+                onFocus={(e) =>
+                  (e.currentTarget.style.boxShadow =
+                    "0 0 0 4px #25d36680, 0 4px 16px rgba(0,0,0,0.18)")
+                }
+                onBlur={(e) =>
+                  (e.currentTarget.style.boxShadow =
+                    "0 4px 16px rgba(0,0,0,0.18)")
+                }
                 tabIndex={0}
               >
                 <SiX color="#fff" size={28} />
