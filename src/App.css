@@ -1,7 +1,12 @@
 body {
   margin: 0;
   font-family: "Roboto", sans-serif;
-  background-color: #e5e7ea; /* Tom claro, moderno e neutro, combina com o site */
+  background: linear-gradient(135deg, #232526cc 0%, #414345cc 100%),
+    /* camada escura para contraste */
+      url("https://images.unsplash.com/photo-1637640125496-31852f042a60?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8bWVjaGFuaWNhbCUyMHNob3B8ZW58MHx8MHx8fDA%3D"); 
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
   color: #222;
   overflow-x: hidden;
 }
@@ -233,7 +238,7 @@ a {
 }
 
 main {
-  max-width: 900px;
+  max-width: 900px; /* largura máxima do conteúdo */
   margin: auto;
   padding: 5rem 1rem 2rem 1rem; /* 5rem para compensar o header fixo */
 }
@@ -329,7 +334,7 @@ footer {
 
 @media (max-width: 600px) {
   .whatsapp-float-btn {
-    width: 58px !important; 
+    width: 58px !important;
     height: 58px !important;
     bottom: 16px !important;
     right: 16px !important;
