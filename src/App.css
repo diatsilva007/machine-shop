@@ -272,8 +272,8 @@ footer {
   bottom: 28px;
   right: 28px;
   z-index: 9999; /* aumente o z-index */
-  width: 56px;
-  height: 56px;
+  width: 70px;
+  height: 70px;
   background: #25d366;
   border-radius: 50%;
   display: flex;
@@ -329,8 +329,8 @@ footer {
 
 @media (max-width: 600px) {
   .whatsapp-float-btn {
-    width: 46px !important;
-    height: 46px !important;
+    width: 58px !important; 
+    height: 58px !important;
     bottom: 16px !important;
     right: 16px !important;
     z-index: 9999 !important;
@@ -489,8 +489,8 @@ footer {
     height: auto !important;
   }
   .whatsapp-float-btn {
-    width: 46px !important;
-    height: 46px !important;
+    width: 58px !important; /* aumente aqui também */
+    height: 58px !important;
     bottom: 16px !important;
     right: 16px !important;
   }
