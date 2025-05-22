@@ -22,8 +22,36 @@ function useIsMobile(breakpoint = 800) {
 
 const Galeria = () => {
   const [index, setIndex] = useState(0);
+  const [pause, setPause] = useState(false);
   const timeoutRef = useRef(null);
+  const pauseTimeoutRef = useRef(null);
   const isMobile = useIsMobile(800);
+
+  // Função para pausar autoplay por 5 segundos
+  const pauseAutoplay = () => {
+    setPause(true);
+    if (pauseTimeoutRef.current) clearTimeout(pauseTimeoutRef.current);
+    pauseTimeoutRef.current = setTimeout(() => setPause(false), 5000);
+  };
+
+  // Autoplay só roda se não estiver pausado
+  useEffect(() => {
+    if (pause) return;
+    timeoutRef.current = setTimeout(() => {
+      setIndex((prev) => (prev + 1) % imagens.length);
+    }, 2500);
+    return () => clearTimeout(timeoutRef.current);
+  }, [index, pause]);
+
+  const handlePrev = () => {
+    setIndex((prev) => (prev - 1 + imagens.length) % imagens.length);
+    pauseAutoplay();
+  };
+
+  const handleNext = () => {
+    setIndex((prev) => (prev + 1) % imagens.length);
+    pauseAutoplay();
+  };
 
   // --- SWIPE: controle de toque ---
   const touchStartX = useRef(null);
@@ -35,25 +63,10 @@ const Galeria = () => {
   const handleTouchEnd = (e) => {
     if (touchStartX.current === null) return;
     const deltaX = e.changedTouches[0].clientX - touchStartX.current;
-    if (deltaX > 40) handlePrev(); // Swipe para direita
-    if (deltaX < -40) handleNext(); // Swipe para esquerda
+    if (deltaX > 40) handlePrev();
+    if (deltaX < -40) handleNext();
     touchStartX.current = null;
-  };
-
-  useEffect(() => {
-    timeoutRef.current = setTimeout(() => {
-      setIndex((prev) => (prev + 1) % imagens.length);
-    }, 2500);
-
-    return () => clearTimeout(timeoutRef.current);
-  }, [index]);
-
-  const handlePrev = () => {
-    setIndex((prev) => (prev - 1 + imagens.length) % imagens.length);
-  };
-
-  const handleNext = () => {
-    setIndex((prev) => (prev + 1) % imagens.length);
+    pauseAutoplay();
   };
 
   // Estilos responsivos para o container da imagem
@@ -171,7 +184,10 @@ const Galeria = () => {
             {imagens.map((_, idx) => (
               <button
                 key={idx}
-                onClick={() => setIndex(idx)}
+                onClick={() => {
+                  setIndex(idx);
+                  pauseAutoplay();
+                }}
                 style={{
                   width: 12,
                   height: 12,
