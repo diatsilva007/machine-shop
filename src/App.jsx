@@ -31,6 +31,31 @@ function useIsMobile(breakpoint = 700) {
 function App() {
   const isMobile = useIsMobile();
 
+  useEffect(() => {
+    // Scroll suave para âncoras internas
+    const handleSmoothScroll = (e) => {
+      const href = e.target.getAttribute("href");
+      if (href && href.startsWith("#")) {
+        const el = document.querySelector(href);
+        if (el) {
+          e.preventDefault();
+          el.scrollIntoView({ behavior: "smooth", block: "start" });
+        }
+      }
+    };
+
+    // Seleciona todos os links internos do footer
+    const footerLinks = document.querySelectorAll('footer a[href^="#"]');
+    footerLinks.forEach((link) =>
+      link.addEventListener("click", handleSmoothScroll)
+    );
+    return () => {
+      footerLinks.forEach((link) =>
+        link.removeEventListener("click", handleSmoothScroll)
+      );
+    };
+  }, []);
+
   return (
     <>
       <Header />
@@ -315,6 +340,119 @@ function App() {
             <p style={{ marginTop: 18, color: "#bbb", fontSize: 13 }}>
               Siga-nos nas redes sociais para novidades e promoções!
             </p>
+          </div>
+          {/* Links rápidos do rodapé */}
+          <div style={{ minWidth: 180, flex: 1 }}>
+            <strong style={{ fontSize: 18, color: "#25d366" }}>
+              Links Rápidos
+            </strong>
+            <nav aria-label="Links rápidos">
+              <ul
+                style={{
+                  listStyle: "none",
+                  padding: 0,
+                  margin: "18px 0 0 0",
+                  lineHeight: 2,
+                }}
+              >
+                <li>
+                  <a
+                    href="#sobre"
+                    style={{
+                      color: "#fff",
+                      textDecoration: "none",
+                      transition: "color 0.2s",
+                    }}
+                    onMouseOver={(e) =>
+                      (e.currentTarget.style.color = "#25d366")
+                    }
+                    onMouseOut={(e) => (e.currentTarget.style.color = "#fff")}
+                  >
+                    Sobre
+                  </a>
+                </li>
+                <li>
+                  <a
+                    href="#servicos"
+                    style={{
+                      color: "#fff",
+                      textDecoration: "none",
+                      transition: "color 0.2s",
+                    }}
+                    onMouseOver={(e) =>
+                      (e.currentTarget.style.color = "#25d366")
+                    }
+                    onMouseOut={(e) => (e.currentTarget.style.color = "#fff")}
+                  >
+                    Serviços
+                  </a>
+                </li>
+                <li>
+                  <a
+                    href="#galeria"
+                    style={{
+                      color: "#fff",
+                      textDecoration: "none",
+                      transition: "color 0.2s",
+                    }}
+                    onMouseOver={(e) =>
+                      (e.currentTarget.style.color = "#25d366")
+                    }
+                    onMouseOut={(e) => (e.currentTarget.style.color = "#fff")}
+                  >
+                    Galeria
+                  </a>
+                </li>
+                <li>
+                  <a
+                    href="#depoimentos"
+                    style={{
+                      color: "#fff",
+                      textDecoration: "none",
+                      transition: "color 0.2s",
+                    }}
+                    onMouseOver={(e) =>
+                      (e.currentTarget.style.color = "#25d366")
+                    }
+                    onMouseOut={(e) => (e.currentTarget.style.color = "#fff")}
+                  >
+                    Depoimentos
+                  </a>
+                </li>
+                <li>
+                  <a
+                    href="#contato"
+                    style={{
+                      color: "#fff",
+                      textDecoration: "none",
+                      transition: "color 0.2s",
+                    }}
+                    onMouseOver={(e) =>
+                      (e.currentTarget.style.color = "#25d366")
+                    }
+                    onMouseOut={(e) => (e.currentTarget.style.color = "#fff")}
+                  >
+                    Contato
+                  </a>
+                </li>
+                <li>
+                  <a
+                    href="#localizacao"
+                    style={{
+                      color: "#fff",
+                      textDecoration: "none",
+                      transition: "color 0.2s",
+                    }}
+                    onMouseOver={(e) =>
+                      (e.currentTarget.style.color = "#25d366")
+                    }
+                    onMouseOut={(e) => (e.currentTarget.style.color = "#fff")}
+                  >
+                    Localização
+                  </a>
+                </li>
+              </ul>
+            </nav>
           </div>
         </div>
         <div
