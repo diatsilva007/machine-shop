@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import Header from "./components/Header";
 import Hero from "./components/Hero";
 import Sobre from "./components/Sobre";
@@ -13,7 +13,24 @@ import WhatsAppButton from "./components/WhatsAppButton";
 import { FaFacebook, FaInstagram, FaTelegramPlane } from "react-icons/fa";
 import { SiX } from "react-icons/si"; // Twitter (X) icon
 
+// Hook para detectar largura da tela em tempo real
+function useIsMobile(breakpoint = 700) {
+  const [isMobile, setIsMobile] = useState(window.innerWidth < breakpoint);
+
+  useEffect(() => {
+    function handleResize() {
+      setIsMobile(window.innerWidth < breakpoint);
+    }
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, [breakpoint]);
+
+  return isMobile;
+}
+
 function App() {
+  const isMobile = useIsMobile();
+
   return (
     <>
       <Header />
@@ -33,18 +50,14 @@ function App() {
         style={{
           background: "linear-gradient(90deg, #232526 0%, #414345 100%)",
           color: "#fff",
-          padding: "3rem 1rem 1.5rem 1rem",
+          padding: isMobile
+            ? "2rem 0.5rem 1rem 0.5rem"
+            : "3rem 1rem 1.5rem 1rem",
           marginTop: "2rem",
           fontSize: 16,
           boxShadow: "0 -2px 16px rgba(0,0,0,0.18)",
           borderTopLeftRadius: 24,
           borderTopRightRadius: 24,
-          // Adicione este bloco para responsividade:
-          ...(window.innerWidth < 700
-            ? {
-                padding: "2rem 0.5rem 1rem 0.5rem",
-              }
-            : {}),
         }}
       >
         <div
@@ -53,13 +66,12 @@ function App() {
             margin: "0 auto",
             display: "flex",
             flexWrap: "wrap",
-            justifyContent:
-              window.innerWidth < 700 ? "center" : "space-between",
-            alignItems: window.innerWidth < 700 ? "center" : "flex-start",
-            flexDirection: window.innerWidth < 700 ? "column" : "row",
-            gap: window.innerWidth < 700 ? 28 : 40,
-            rowGap: window.innerWidth < 700 ? 32 : 48,
-            textAlign: window.innerWidth < 700 ? "center" : "left",
+            justifyContent: isMobile ? "center" : "space-between",
+            alignItems: isMobile ? "center" : "flex-start",
+            flexDirection: isMobile ? "column" : "row",
+            gap: isMobile ? 28 : 40,
+            rowGap: isMobile ? 32 : 48,
+            textAlign: isMobile ? "center" : "left",
           }}
         >
           {/* Coluna 1 */}
