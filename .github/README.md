@@ -1,15 +1,13 @@
 
 # DAS Auto Solutions - Machine Shop
 
-Bem-vindo ao repositório do site **DAS Auto Solutions**, uma oficina mecânica moderna e profissional!  
-Este projeto foi desenvolvido em React, com foco em responsividade, animações suaves, performance e experiência do usuário.
+> Bem-vindo ao repositório do site **DAS Auto Solutions**, uma oficina mecânica moderna e profissional! Este projeto foi desenvolvido em React, com foco em responsividade, animações suaves, performance e experiência do usuário.
 
 ---
 
 ## 🚗 Sobre o Projeto
 
-O site apresenta os serviços, diferenciais, galeria, depoimentos, localização e contato da oficina, com visual moderno e animações premium.  
-Ideal para oficinas mecânicas, auto centers e empresas do ramo automotivo que desejam presença digital de alto padrão.
+>O site apresenta os serviços, diferenciais, galeria, depoimentos, localização e contato da oficina, com visual moderno e animações premium. Ideal para oficinas mecânicas, auto centers e empresas do ramo automotivo que desejam presença digital de alto padrão.
 
 ---
 
