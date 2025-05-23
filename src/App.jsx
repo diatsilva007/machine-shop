@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useRef, useEffect } from "react";
 import Header from "./components/Header";
 import Hero from "./components/Hero";
 import Sobre from "./components/Sobre";
@@ -25,24 +25,54 @@ function useIsMobile(breakpoint = 700) {
   return isMobile;
 }
 
+function useSectionAnimation() {
+  const ref = useRef();
+  useEffect(() => {
+    function onScroll() {
+      if (!ref.current) return;
+      const rect = ref.current.getBoundingClientRect();
+      if (rect.top < window.innerHeight - 80) {
+        ref.current.classList.add("visible");
+      }
+    }
+    window.addEventListener("scroll", onScroll);
+    onScroll();
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
+  return ref;
+}
+
 function App() {
   const isMobile = useIsMobile();
+
+  // Refs para cada seção
+  const heroRef = useSectionAnimation();
+  const sobreRef = useSectionAnimation();
+  const servicosRef = useSectionAnimation();
+  const diferenciaisRef = useSectionAnimation();
+  const galeriaRef = useSectionAnimation();
+  const depoimentosRef = useSectionAnimation();
+  const contatoRef = useSectionAnimation();
+  const localizacaoRef = useSectionAnimation();
+  const footerRef = useSectionAnimation();
 
   return (
     <>
       <Header />
       <main>
-        <Hero />
-        <Sobre />
-        <Servicos />
-        <Diferenciais />
-        <Galeria />
-        <Depoimentos />
-        <Contato />
-        <Localizacao />
+        <div ref={heroRef} className="section-fade-up"><Hero /></div>
+        <div ref={sobreRef} className="section-fade-left"><Sobre /></div>
+        <div ref={servicosRef} className="section-fade-right"><Servicos /></div>
+        <div ref={diferenciaisRef} className="section-zoom-in"><Diferenciais /></div>
+        <div ref={galeriaRef} className="section-fade-up"><Galeria /></div>
+        <div ref={depoimentosRef} className="section-fade-left"><Depoimentos /></div>
+        <div ref={contatoRef} className="section-fade-right"><Contato /></div>
+        <div ref={localizacaoRef} className="section-zoom-in"><Localizacao /></div>
       </main>
       <WhatsAppButton />
-      <Footer isMobile={isMobile} />
+      <div ref={footerRef} className="footer-fade-up">
+        <Footer isMobile={isMobile} />
+      </div>
     </>
   );
 }
