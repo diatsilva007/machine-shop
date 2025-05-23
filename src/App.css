@@ -540,3 +540,80 @@ footer {
     height: 180px !important;
   }
 }
+
+// Animações de Fade-in para seções
+
+/* Fade-in para cima */
+.section-fade-up {
+  opacity: 0;
+  transform: translateY(40px);
+  transition: opacity 0.8s, transform 0.8s;
+}
+.section-fade-up.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Fade-in para a esquerda */
+.section-fade-left {
+  opacity: 0;
+  transform: translateX(-40px);
+  transition: opacity 0.8s, transform 0.8s;
+}
+.section-fade-left.visible {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+/* Fade-in para a direita */
+.section-fade-right {
+  opacity: 0;
+  transform: translateX(40px);
+  transition: opacity 0.8s, transform 0.8s;
+}
+.section-fade-right.visible {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+/* Zoom-in */
+.section-zoom-in {
+  opacity: 0;
+  transform: scale(0.95);
+  transition: opacity 0.8s, transform 0.8s;
+}
+.section-zoom-in.visible {
+  opacity: 1;
+  transform: scale(1);
+}
+
+/* Fade-in para baixo */
+.footer-fade-up {
+  opacity: 0;
+  transform: translateY(40px);
+  transition: opacity 0.8s, transform 0.8s;
+}
+.footer-fade-up.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Fade-in premium para o footer */
+.footer-fade-up {
+  opacity: 0;
+  transform: translateY(64px) scale(0.97);
+  filter: blur(12px) brightness(0.96);
+  box-shadow: 0 32px 64px 0 rgba(34,34,34,0.16);
+  transition:
+    opacity 1.3s cubic-bezier(0.4, 2, 0.6, 1) 0.35s,
+    transform 1.3s cubic-bezier(0.4, 2, 0.6, 1) 0.35s,
+    filter 1.3s cubic-bezier(0.4, 2, 0.6, 1) 0.35s,
+    box-shadow 1.3s cubic-bezier(0.4, 2, 0.6, 1) 0.35s;
+  will-change: opacity, transform, filter, box-shadow;
+}
+.footer-fade-up.visible {
+  opacity: 1;
+  transform: translateY(0) scale(1);
+  filter: blur(0) brightness(1);
+  box-shadow: 0 8px 32px 0 rgba(34,34,34,0.08);
+}
