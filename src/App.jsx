@@ -60,14 +60,14 @@ function App() {
     <>
       <Header />
       <main>
-        <div ref={heroRef} className="section-fade-up"><Hero /></div>
-        <div ref={sobreRef} className="section-fade-left"><Sobre /></div>
-        <div ref={servicosRef} className="section-fade-right"><Servicos /></div>
-        <div ref={diferenciaisRef} className="section-zoom-in"><Diferenciais /></div>
-        <div ref={galeriaRef} className="section-fade-up"><Galeria /></div>
-        <div ref={depoimentosRef} className="section-fade-left"><Depoimentos /></div>
-        <div ref={contatoRef} className="section-fade-right"><Contato /></div>
-        <div ref={localizacaoRef} className="section-zoom-in"><Localizacao /></div>
+        <div id="home" ref={heroRef} className="section-fade-up"><Hero /></div>
+        <div id="sobre" ref={sobreRef} className="section-fade-left"><Sobre /></div>
+        <div id="servicos" ref={servicosRef} className="section-fade-right"><Servicos /></div>
+        <div id="diferenciais" ref={diferenciaisRef} className="section-zoom-in"><Diferenciais /></div>
+        <div id="galeria" ref={galeriaRef} className="section-fade-up"><Galeria /></div>
+        <div id="depoimentos" ref={depoimentosRef} className="section-fade-left"><Depoimentos /></div>
+        <div id="contato" ref={contatoRef} className="section-fade-right"><Contato /></div>
+        <div id="localizacao" ref={localizacaoRef} className="section-zoom-in"><Localizacao /></div>
       </main>
       <WhatsAppButton />
       <div ref={footerRef} className="footer-fade-up">
