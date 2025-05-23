@@ -3,7 +3,7 @@ body {
   font-family: "Roboto", sans-serif;
   background: linear-gradient(135deg, #232526cc 0%, #414345cc 100%),
     /* camada escura para contraste */
-      url("https://images.unsplash.com/photo-1637640125496-31852f042a60?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8bWVjaGFuaWNhbCUyMHNob3B8ZW58MHx8MHx8fDA%3D"); 
+      url("https://images.unsplash.com/photo-1637640125496-31852f042a60?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8bWVjaGFuaWNhbCUyMHNob3B8ZW58MHx8MHx8fDA%3D");
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
@@ -548,9 +548,8 @@ footer {
   opacity: 0;
   transform: translateY(48px) scale(0.97);
   filter: blur(10px) brightness(0.97);
-  box-shadow: 0 16px 32px 0 rgba(34,34,34,0.10);
-  transition:
-    opacity 1.1s cubic-bezier(0.4, 2, 0.6, 1) 0.18s,
+  box-shadow: 0 16px 32px 0 rgba(34, 34, 34, 0.1);
+  transition: opacity 1.1s cubic-bezier(0.4, 2, 0.6, 1) 0.18s,
     transform 1.1s cubic-bezier(0.4, 2, 0.6, 1) 0.18s,
     filter 1.1s cubic-bezier(0.4, 2, 0.6, 1) 0.18s,
     box-shadow 1.1s cubic-bezier(0.4, 2, 0.6, 1) 0.18s;
@@ -560,7 +559,7 @@ footer {
   opacity: 1;
   transform: translateY(0) scale(1);
   filter: blur(0) brightness(1);
-  box-shadow: 0 4px 16px 0 rgba(34,34,34,0.06);
+  box-shadow: 0 4px 16px 0 rgba(34, 34, 34, 0.06);
 }
 
 /* Fade-in premium para a esquerda */
@@ -568,9 +567,8 @@ footer {
   opacity: 0;
   transform: translateX(-48px) scale(0.97);
   filter: blur(10px) brightness(0.97);
-  box-shadow: 0 16px 32px 0 rgba(34,34,34,0.10);
-  transition:
-    opacity 1.1s cubic-bezier(0.4, 2, 0.6, 1) 0.22s,
+  box-shadow: 0 16px 32px 0 rgba(34, 34, 34, 0.1);
+  transition: opacity 1.1s cubic-bezier(0.4, 2, 0.6, 1) 0.22s,
     transform 1.1s cubic-bezier(0.4, 2, 0.6, 1) 0.22s,
     filter 1.1s cubic-bezier(0.4, 2, 0.6, 1) 0.22s,
     box-shadow 1.1s cubic-bezier(0.4, 2, 0.6, 1) 0.22s;
@@ -580,7 +578,7 @@ footer {
   opacity: 1;
   transform: translateX(0) scale(1);
   filter: blur(0) brightness(1);
-  box-shadow: 0 4px 16px 0 rgba(34,34,34,0.06);
+  box-shadow: 0 4px 16px 0 rgba(34, 34, 34, 0.06);
 }
 
 /* Fade-in premium para a direita */
@@ -588,9 +586,8 @@ footer {
   opacity: 0;
   transform: translateX(48px) scale(0.97);
   filter: blur(10px) brightness(0.97);
-  box-shadow: 0 16px 32px 0 rgba(34,34,34,0.10);
-  transition:
-    opacity 1.1s cubic-bezier(0.4, 2, 0.6, 1) 0.22s,
+  box-shadow: 0 16px 32px 0 rgba(34, 34, 34, 0.1);
+  transition: opacity 1.1s cubic-bezier(0.4, 2, 0.6, 1) 0.22s,
     transform 1.1s cubic-bezier(0.4, 2, 0.6, 1) 0.22s,
     filter 1.1s cubic-bezier(0.4, 2, 0.6, 1) 0.22s,
     box-shadow 1.1s cubic-bezier(0.4, 2, 0.6, 1) 0.22s;
@@ -600,7 +597,7 @@ footer {
   opacity: 1;
   transform: translateX(0) scale(1);
   filter: blur(0) brightness(1);
-  box-shadow: 0 4px 16px 0 rgba(34,34,34,0.06);
+  box-shadow: 0 4px 16px 0 rgba(34, 34, 34, 0.06);
 }
 
 /* Zoom-in premium */
@@ -608,9 +605,8 @@ footer {
   opacity: 0;
   transform: scale(0.93);
   filter: blur(10px) brightness(0.97);
-  box-shadow: 0 16px 32px 0 rgba(34,34,34,0.10);
-  transition:
-    opacity 1.1s cubic-bezier(0.4, 2, 0.6, 1) 0.25s,
+  box-shadow: 0 16px 32px 0 rgba(34, 34, 34, 0.1);
+  transition: opacity 1.1s cubic-bezier(0.4, 2, 0.6, 1) 0.25s,
     transform 1.1s cubic-bezier(0.4, 2, 0.6, 1) 0.25s,
     filter 1.1s cubic-bezier(0.4, 2, 0.6, 1) 0.25s,
     box-shadow 1.1s cubic-bezier(0.4, 2, 0.6, 1) 0.25s;
@@ -620,7 +616,7 @@ footer {
   opacity: 1;
   transform: scale(1);
   filter: blur(0) brightness(1);
-  box-shadow: 0 4px 16px 0 rgba(34,34,34,0.06);
+  box-shadow: 0 4px 16px 0 rgba(34, 34, 34, 0.06);
 }
 
 /* Fade-in para baixo */
@@ -639,9 +635,8 @@ footer {
   opacity: 0;
   transform: translateY(64px) scale(0.97);
   filter: blur(12px) brightness(0.96);
-  box-shadow: 0 32px 64px 0 rgba(34,34,34,0.16);
-  transition:
-    opacity 1.3s cubic-bezier(0.4, 2, 0.6, 1) 0.35s,
+  box-shadow: 0 32px 64px 0 rgba(34, 34, 34, 0.16);
+  transition: opacity 1.3s cubic-bezier(0.4, 2, 0.6, 1) 0.35s,
     transform 1.3s cubic-bezier(0.4, 2, 0.6, 1) 0.35s,
     filter 1.3s cubic-bezier(0.4, 2, 0.6, 1) 0.35s,
     box-shadow 1.3s cubic-bezier(0.4, 2, 0.6, 1) 0.35s;
@@ -651,5 +646,5 @@ footer {
   opacity: 1;
   transform: translateY(0) scale(1);
   filter: blur(0) brightness(1);
-  box-shadow: 0 8px 32px 0 rgba(34,34,34,0.08);
+  box-shadow: 0 8px 32px 0 rgba(34, 34, 34, 0.08);
 }
