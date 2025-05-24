@@ -163,6 +163,8 @@ function Contato() {
           </div>
           {erro && (
             <div
+              role="status"
+              aria-live="polite"
               style={{
                 color: "#e74c3c",
                 marginBottom: 12,
@@ -178,6 +180,8 @@ function Contato() {
           )}
           {sucesso && (
             <div
+              role="status"
+              aria-live="polite"
               style={{
                 color: "#25d366",
                 marginBottom: 12,
