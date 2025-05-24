@@ -47,7 +47,7 @@
    ```bash
    npm install
    # ou
-   yarn
+   yarn install
    ```
 
 3. **Inicie o servidor de desenvolvimento:**
