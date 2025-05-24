@@ -268,7 +268,7 @@ footer {
   font-size: 0.9rem;
 }
 
-/* Estilos Melhorados do Botão Flutuante do WhatsApp */
+/* Estilos Base do Botão Flutuante do WhatsApp */
 .whatsapp-float-btn {
   position: fixed;
   bottom: 25px;
@@ -283,7 +283,7 @@ footer {
   justify-content: center;
   /* Sombra principal e base para animação de pulso */
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2), 0 0 0 0px rgba(37, 211, 102, 0.5);
-  z-index: 9999; /* Abaixo do header (z-index: 10000), mas acima da maioria do conteúdo */
+  z-index: 9999;
   transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1),
     box-shadow 0.3s ease, background-color 0.3s ease;
   text-decoration: none;
@@ -299,7 +299,7 @@ footer {
   /* Expande a sombra do pulso e a torna transparente no hover */
   box-shadow: 0 6px 16px rgba(0, 0, 0, 0.3), 0 0 0 10px rgba(37, 211, 102, 0);
   background-color: #128c7e; /* Tom mais escuro do WhatsApp no hover */
-  animation-play-state: paused; /* Pausa a animação de pulso no hover para priorizar o efeito de hover */
+  animation-play-state: paused; /* Pausa a animação de pulso no hover */
 }
 
 .whatsapp-float-btn:active {
@@ -330,7 +330,7 @@ footer {
   }
 }
 
-/* Tooltip */
+/* Tooltip Base */
 .whatsapp-float-btn .tooltip {
   visibility: hidden;
   opacity: 0;
@@ -341,11 +341,11 @@ footer {
   padding: 8px 12px;
   border-radius: 6px;
   z-index: 10000; /* Acima do botão */
-  white-space: nowrap;
+  white-space: nowrap; /* Por padrão, não quebra linha */
   font-size: 0.875rem; /* 14px */
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
 
-  /* Posicionamento à esquerda do botão */
+  /* Posicionamento padrão (à esquerda do botão para desktop) */
   right: 100%;
   margin-right: 12px;
   top: 50%;
@@ -356,7 +356,7 @@ footer {
   pointer-events: none;
 }
 
-/* Seta do Tooltip */
+/* Seta do Tooltip (padrão para desktop, apontando para a direita) */
 .whatsapp-float-btn .tooltip::after {
   content: "";
   position: absolute;
@@ -368,48 +368,58 @@ footer {
   border-color: transparent transparent transparent #333;
 }
 
+/* Mostrar Tooltip no Hover */
 .whatsapp-float-btn:hover .tooltip {
   visibility: visible;
   opacity: 1;
-  transform: translateY(-50%) translateX(0); /* Estado final da animação */
+  transform: translateY(-50%) translateX(0); /* Estado final da animação para desktop */
   transition-delay: 0.1s, 0.1s, 0s; /* Pequeno delay para aparecer */
 }
 
+/* Adaptações para Dispositivos Móveis (max-width: 600px) */
 @media (max-width: 600px) {
   .whatsapp-float-btn {
-    width: 55px;
-    height: 55px;
-    bottom: 20px;
-    right: 20px;
-    /* z-index: 9999; (já definido na base, não precisa repetir sem !important) */
-    /* display: flex; (já definido na base) */
+    width: 58px;   /* Tamanho ajustado para mobile */
+    height: 58px;  /* Tamanho ajustado para mobile */
+    bottom: 16px;  /* Posição ajustada para mobile */
+    right: 16px;   /* Posição ajustada para mobile */
   }
 
   .whatsapp-float-btn .tooltip {
-    /* Em telas menores, posicionar o tooltip acima */
-    right: auto;
-    left: 50%;
-    bottom: 100%;
-    top: auto;
-    margin-right: 0;
-    margin-bottom: 10px;
-    transform: translateX(-50%) translateY(10px); /* Estado inicial (vindo de baixo) */
-    font-size: 0.75rem; /* 12px */
+    /* Posicionar o tooltip à ESQUERDA do botão em telas menores */
+    right: 100%; /* Alinha a borda direita do tooltip com a borda esquerda do botão */
+    left: auto;   /* Reseta o 'left' que era usado para centralizar acima */
+    top: 50%;     /* Centraliza verticalmente em relação ao botão */
+    bottom: auto; /* Reseta o 'bottom' que era usado para posicionar acima */
+    margin-right: 12px; /* Espaço entre o botão e o tooltip (similar ao desktop) */
+    margin-bottom: 0; /* Reseta a margem inferior */
+    transform: translateY(-50%) translateX(10px); /* Estado inicial da animação (vindo da direita, levemente afastado) */
+    
+    font-size: 0.75rem; /* 12px - Fonte menor para mobile */
+
+    /* Correções para o texto cortado */
+    white-space: nowrap;    /* Força o texto a ficar em uma única linha */
+    word-break: break-word; /* Quebra palavras longas se necessário para evitar estouro */
+    max-width: 220px;       /* Aumenta a largura para o texto caber em uma linha */
+    text-align: left;       /* Alinha à esquerda, mais natural se houver quebra */
   }
 
   .whatsapp-float-btn:hover .tooltip {
-    transform: translateX(-50%) translateY(0); /* Estado final */
+    /* Ajusta a animação final para o posicionamento à esquerda */
+    transform: translateY(-50%) translateX(0); 
   }
 
+  /* Seta do Tooltip para mobile (apontando para a DIREITA, vindo da lateral direita do tooltip) */
   .whatsapp-float-btn .tooltip::after {
-    left: 50%;
-    bottom: 100%; /* Aponta para baixo */
-    top: auto;
-    margin-left: -6px;
-    margin-top: 0;
-    border-color: #333 transparent transparent transparent; /* Seta para cima */
+    left: 100%; /* Posiciona a seta na borda direita do tooltip */
+    top: 50%;   /* Centraliza verticalmente a seta */
+    bottom: auto; /* Reseta o 'bottom' */
+    margin-left: 0; /* Reseta o 'margin-left' */
+    margin-top: -6px; /* Compensa metade da altura da seta para centralizar verticalmente */
+    border-color: transparent transparent transparent #333; /* Seta apontando para a direita */
   }
 }
+
 
 /* Responsividade geral */
 @media (max-width: 1100px) {
@@ -563,10 +573,7 @@ footer {
     bottom: 16px !important;
     right: 16px !important;
   }
-  .whatsapp-float-btn .tooltip {
-    font-size: 12px;
-    right: 54px;
-  }
+  /* A regra conflitante para .whatsapp-float-btn .tooltip foi removida daqui */
   footer {
     padding-bottom: 70px !important; /* espaço para o botão flutuante */
   }
