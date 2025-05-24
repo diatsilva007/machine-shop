@@ -25,20 +25,67 @@ function useIsMobile(breakpoint = 700) {
   return isMobile;
 }
 
-function useSectionAnimation() {
-  const ref = useRef();
+/**
+ * Hook customizado para animar seções quando elas entram na viewport.
+ * Utiliza a IntersectionObserver API para melhor performance e configurabilidade.
+ *
+ * @param {object} options - Opções de configuração para o IntersectionObserver.
+ * @param {number} [options.threshold=0.01] - Porcentagem da visibilidade do alvo (0.0 a 1.0)
+ * para disparar o callback. 0.01 significa que assim que 1% do elemento estiver visível
+ * (considerando o rootMargin), a animação é acionada.
+ * @param {string} [options.rootMargin="0px 0px -80px 0px"] - Margem ao redor do root (viewport).
+ * "0px 0px -80px 0px" faz com que a animação seja acionada quando o topo do elemento
+ * está a 80px de alcançar a borda inferior da viewport, replicando o comportamento anterior.
+ * @param {boolean} [options.triggerOnce=false] - Se true, a animação ocorre apenas uma vez.
+ * @param {string} [options.visibleClassName="visible"] - Classe CSS a ser adicionada.
+ * @returns {React.RefObject} - Ref a ser anexada ao elemento DOM.
+ */
+function useSectionAnimation(options = {}) {
+  const ref = useRef(null);
+  const {
+    threshold = 0.01,
+    rootMargin = "0px 0px -80px 0px", // Simula o "80px da parte inferior da tela"
+    triggerOnce = false,
+    visibleClassName = "visible",
+  } = options;
+
   useEffect(() => {
-    function onScroll() {
-      if (!ref.current) return;
-      const rect = ref.current.getBoundingClientRect();
-      if (rect.top < window.innerHeight - 80) {
-        ref.current.classList.add("visible");
+    const currentElement = ref.current;
+    if (!currentElement) return;
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            currentElement.classList.add(visibleClassName);
+            if (triggerOnce) {
+              observer.unobserve(currentElement); // Para de observar se for para animar apenas uma vez
+            }
+          } else {
+            // Só remove a classe se não for para animar apenas uma vez
+            if (!triggerOnce) {
+              currentElement.classList.remove(visibleClassName);
+            }
+          }
+        });
+      },
+      {
+        root: null, // Observa em relação à viewport
+        rootMargin: rootMargin,
+        threshold: threshold,
       }
-    }
-    window.addEventListener("scroll", onScroll);
-    onScroll();
-    return () => window.removeEventListener("scroll", onScroll);
-  }, []);
+    );
+
+    observer.observe(currentElement);
+
+    return () => {
+      if (currentElement) {
+        observer.unobserve(currentElement);
+      }
+      // observer.disconnect(); // Descomente se um único observer for usado para múltiplos elementos e o hook for desmontado
+    };
+  }, [ref, threshold, rootMargin, triggerOnce, visibleClassName]);
+
   return ref;
 }
 
@@ -46,7 +93,10 @@ function App() {
   const isMobile = useIsMobile();
 
   // Refs para cada seção
-  const heroRef = useSectionAnimation();
+  const heroRef = useSectionAnimation({
+    triggerOnce: true,
+    rootMargin: "0px 0px -150px 0px",
+  }); // Exemplo: Hero anima uma vez e um pouco mais cedo
   const sobreRef = useSectionAnimation();
   const servicosRef = useSectionAnimation();
   const diferenciaisRef = useSectionAnimation();
