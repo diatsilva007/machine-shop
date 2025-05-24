@@ -90,7 +90,7 @@ Você pode publicar facilmente no [Vercel](https://vercel.com/), [Netlify](https
 
 Acesse a versão online do projeto:
 
-👉 [https://portfolio-diogoataide.vercel.app](https://machine-shop.vercel.app/)
+👉 [DAS Auto Solutions - Machine Shop](https://machine-shop.vercel.app/)
 
 ---
 
@@ -108,4 +108,18 @@ Entre em contato pelo [WhatsApp](https://wa.me/5535997714779) ou abra uma issue!
 
 ---
 
-**DAS Auto Solutions** - Sua oficina mecânica de confiança!
+<div align="center">
+  
+# Feito com 💙
+| [<img src="https://avatars.githubusercontent.com/u/143373573?v=4" width="100" height="100"><br><sub>Diogo Ataide</sub>](https://github.com/diatsilva007)
+| :---: |
+
+ <p><img src="http://img.shields.io/static/v1?label=STATUS&message=CONCLUIDO&color=GREEN&style=for-the-badge"/></p>
+ 
+ # 🙅‍♂️
+
+ **⚙️ DAS Auto Solutions** - Sua oficina mecânica de confiança!
+ 
+ </div>
+
+
