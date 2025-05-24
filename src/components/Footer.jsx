@@ -115,6 +115,8 @@ export default function Footer({ isMobile }) {
               display: "flex",
               gap: 18,
               flexWrap: "wrap",
+              justifyContent: isMobile ? "center" : "flex-start",
+              alignItems: "center",
             }}
           >
             {/* Facebook */}
