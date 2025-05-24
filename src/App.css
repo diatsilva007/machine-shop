@@ -656,3 +656,28 @@ footer {
   transform: none !important;
   filter: none !important;
 }
+
+@media (max-width: 600px) {
+  #contato > div {
+    padding: 16px !important;
+    border-radius: 10px !important;
+  }
+  #contato input,
+  #contato textarea,
+  #contato button {
+    font-size: 15px !important;
+    padding: 10px !important;
+    align-items: center !important;
+    justify-content: center !important;
+    text-align: center !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    margin: 0 auto !important;
+    display: flex !important;
+    border-radius: 10px !important;
+  }
+  #contato button {
+    padding: 12px 0 !important;
+    width: 100% !important;
+  }
+}
