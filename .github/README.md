@@ -47,7 +47,7 @@
    ```bash
    npm install
    # ou
-   yarn
+   yarn install
    ```
 
 3. **Inicie o servidor de desenvolvimento:**
@@ -86,6 +86,14 @@ Você pode publicar facilmente no [Vercel](https://vercel.com/), [Netlify](https
 
 ---
 
+## 🖥️ Visualização
+
+Acesse a versão online do projeto:
+
+👉 [DAS Auto Solutions - Machine Shop](https://machine-shop.vercel.app/)
+
+---
+
 ## 📄 Licença
 
 Este projeto é open-source e pode ser adaptado para uso comercial ou pessoal.  
@@ -96,8 +104,22 @@ Consulte as imagens do Unsplash para uso comercial.
 ## 🙋‍♂️ Contato
 
 Dúvidas ou sugestões?  
-Entre em contato pelo [WhatsApp](https://wa.me/seu-numero) ou abra uma issue!
+Entre em contato pelo [WhatsApp](https://wa.me/5535997714779) ou abra uma issue!
 
 ---
 
-**DAS Auto Solutions** - Sua oficina mecânica de confiança!
+<div align="center">
+  
+# Feito com 💙
+| [<img src="https://avatars.githubusercontent.com/u/143373573?v=4" width="100" height="100"><br><sub>Diogo Ataide</sub>](https://github.com/diatsilva007)
+| :---: |
+
+ <p><img src="http://img.shields.io/static/v1?label=STATUS&message=CONCLUIDO&color=GREEN&style=for-the-badge"/></p>
+ 
+ # 🙅‍♂️
+
+ **⚙️ DAS Auto Solutions** - Sua oficina mecânica de confiança!
+ 
+ </div>
+
+
