@@ -163,15 +163,31 @@ function Contato() {
           </div>
           {erro && (
             <div
-              style={{ color: "#e74c3c", marginBottom: 12, fontWeight: 500 }}
+              style={{
+                color: "#e74c3c",
+                marginBottom: 12,
+                fontWeight: 500,
+                display: "flex",
+                alignItems: "center",
+                gap: 8,
+              }}
             >
+              <span style={{ fontSize: 18 }}>❌</span>
               {erro}
             </div>
           )}
           {sucesso && (
             <div
-              style={{ color: "#25d366", marginBottom: 12, fontWeight: 500 }}
+              style={{
+                color: "#25d366",
+                marginBottom: 12,
+                fontWeight: 500,
+                display: "flex",
+                alignItems: "center",
+                gap: 8,
+              }}
             >
+              <span style={{ fontSize: 18 }}>✅</span>
               {sucesso}
             </div>
           )}
@@ -190,12 +206,41 @@ function Contato() {
               opacity: enviando ? 0.7 : 1,
               transition: "opacity 0.2s, box-shadow 0.2s",
               boxShadow: "0 2px 8px #25d36633",
+              display: "flex",
+              alignItems: "center",
+              gap: 10,
             }}
           >
-            {enviando ? "Enviando..." : "Enviar"}
+            {enviando ? (
+              <>
+                <span
+                  style={{
+                    width: 18,
+                    height: 18,
+                    border: "2.5px solid #fff",
+                    borderTop: "2.5px solid #128c7e",
+                    borderRadius: "50%",
+                    display: "inline-block",
+                    animation: "spin 1s linear infinite",
+                  }}
+                ></span>
+                Enviando...
+              </>
+            ) : (
+              "Enviar"
+            )}
           </button>
         </form>
       </div>
+      {/* Loader animation */}
+      <style>
+        {`
+          @keyframes spin {
+            0% { transform: rotate(0deg);}
+            100% { transform: rotate(360deg);}
+          }
+        `}
+      </style>
     </section>
   );
 }
