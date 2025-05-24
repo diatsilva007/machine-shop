@@ -8,17 +8,12 @@ body {
   background-position: center;
   background-repeat: no-repeat;
   color: #222;
-  overflow-x: hidden;
 }
 
 html,
-body,
-#root {
-  width: 100%;
-  min-height: 100%;
-  margin: 0;
-  padding: 0;
+body {
   overflow-x: hidden;
+  max-width: 100vw;
 }
 
 h1,
@@ -541,110 +536,114 @@ footer {
   }
 }
 
-// Animações de Fade-in para seções
+/* --- Remova todas as definições duplicadas e use apenas este bloco para as animações --- */
 
 /* Fade-in premium para cima */
 .section-fade-up {
   opacity: 0;
-  transform: translateY(48px) scale(0.97);
-  filter: blur(10px) brightness(0.97);
-  box-shadow: 0 16px 32px 0 rgba(34, 34, 34, 0.1);
+  transform: translateY(16px) scale(0.98);
+  filter: blur(4px) brightness(0.98);
+  box-shadow: 0 8px 16px 0 rgba(34, 34, 34, 0.08);
   transition: opacity 1.1s cubic-bezier(0.4, 2, 0.6, 1) 0.18s,
     transform 1.1s cubic-bezier(0.4, 2, 0.6, 1) 0.18s,
     filter 1.1s cubic-bezier(0.4, 2, 0.6, 1) 0.18s,
     box-shadow 1.1s cubic-bezier(0.4, 2, 0.6, 1) 0.18s;
   will-change: opacity, transform, filter, box-shadow;
+  overflow: hidden;
+  position: relative;
+  clip-path: inset(0 0 0 0);
 }
 .section-fade-up.visible {
   opacity: 1;
   transform: translateY(0) scale(1);
   filter: blur(0) brightness(1);
-  box-shadow: 0 4px 16px 0 rgba(34, 34, 34, 0.06);
+  box-shadow: 0 2px 8px 0 rgba(34, 34, 34, 0.04);
 }
 
 /* Fade-in premium para a esquerda */
 .section-fade-left {
   opacity: 0;
-  transform: translateX(-48px) scale(0.97);
-  filter: blur(10px) brightness(0.97);
-  box-shadow: 0 16px 32px 0 rgba(34, 34, 34, 0.1);
+  transform: translateX(-16px) scale(0.98);
+  filter: blur(4px) brightness(0.98);
+  box-shadow: 0 8px 16px 0 rgba(34, 34, 34, 0.08);
   transition: opacity 1.1s cubic-bezier(0.4, 2, 0.6, 1) 0.22s,
     transform 1.1s cubic-bezier(0.4, 2, 0.6, 1) 0.22s,
     filter 1.1s cubic-bezier(0.4, 2, 0.6, 1) 0.22s,
     box-shadow 1.1s cubic-bezier(0.4, 2, 0.6, 1) 0.22s;
   will-change: opacity, transform, filter, box-shadow;
+  overflow: hidden;
+  position: relative;
+  clip-path: inset(0 0 0 0);
 }
 .section-fade-left.visible {
   opacity: 1;
   transform: translateX(0) scale(1);
   filter: blur(0) brightness(1);
-  box-shadow: 0 4px 16px 0 rgba(34, 34, 34, 0.06);
+  box-shadow: 0 2px 8px 0 rgba(34, 34, 34, 0.04);
 }
 
 /* Fade-in premium para a direita */
 .section-fade-right {
   opacity: 0;
-  transform: translateX(48px) scale(0.97);
-  filter: blur(10px) brightness(0.97);
-  box-shadow: 0 16px 32px 0 rgba(34, 34, 34, 0.1);
+  transform: translateX(16px) scale(0.98);
+  filter: blur(4px) brightness(0.98);
+  box-shadow: 0 8px 16px 0 rgba(34, 34, 34, 0.08);
   transition: opacity 1.1s cubic-bezier(0.4, 2, 0.6, 1) 0.22s,
     transform 1.1s cubic-bezier(0.4, 2, 0.6, 1) 0.22s,
     filter 1.1s cubic-bezier(0.4, 2, 0.6, 1) 0.22s,
     box-shadow 1.1s cubic-bezier(0.4, 2, 0.6, 1) 0.22s;
   will-change: opacity, transform, filter, box-shadow;
+  overflow: hidden;
+  position: relative;
+  clip-path: inset(0 0 0 0);
 }
 .section-fade-right.visible {
   opacity: 1;
   transform: translateX(0) scale(1);
   filter: blur(0) brightness(1);
-  box-shadow: 0 4px 16px 0 rgba(34, 34, 34, 0.06);
+  box-shadow: 0 2px 8px 0 rgba(34, 34, 34, 0.04);
 }
 
 /* Zoom-in premium */
 .section-zoom-in {
   opacity: 0;
-  transform: scale(0.93);
-  filter: blur(10px) brightness(0.97);
-  box-shadow: 0 16px 32px 0 rgba(34, 34, 34, 0.1);
+  transform: scale(0.96);
+  filter: blur(4px) brightness(0.98);
+  box-shadow: 0 8px 16px 0 rgba(34, 34, 34, 0.08);
   transition: opacity 1.1s cubic-bezier(0.4, 2, 0.6, 1) 0.25s,
     transform 1.1s cubic-bezier(0.4, 2, 0.6, 1) 0.25s,
     filter 1.1s cubic-bezier(0.4, 2, 0.6, 1) 0.25s,
     box-shadow 1.1s cubic-bezier(0.4, 2, 0.6, 1) 0.25s;
   will-change: opacity, transform, filter, box-shadow;
+  overflow: hidden;
+  position: relative;
+  clip-path: inset(0 0 0 0);
 }
 .section-zoom-in.visible {
   opacity: 1;
   transform: scale(1);
   filter: blur(0) brightness(1);
-  box-shadow: 0 4px 16px 0 rgba(34, 34, 34, 0.06);
-}
-
-/* Fade-in para baixo */
-.footer-fade-up {
-  opacity: 0;
-  transform: translateY(40px);
-  transition: opacity 0.8s, transform 0.8s;
-}
-.footer-fade-up.visible {
-  opacity: 1;
-  transform: translateY(0);
+  box-shadow: 0 2px 8px 0 rgba(34, 34, 34, 0.04);
 }
 
 /* Fade-in premium para o footer */
 .footer-fade-up {
   opacity: 0;
-  transform: translateY(64px) scale(0.97);
-  filter: blur(12px) brightness(0.96);
-  box-shadow: 0 32px 64px 0 rgba(34, 34, 34, 0.16);
-  transition: opacity 1.3s cubic-bezier(0.4, 2, 0.6, 1) 0.35s,
-    transform 1.3s cubic-bezier(0.4, 2, 0.6, 1) 0.35s,
-    filter 1.3s cubic-bezier(0.4, 2, 0.6, 1) 0.35s,
-    box-shadow 1.3s cubic-bezier(0.4, 2, 0.6, 1) 0.35s;
+  transform: translateY(16px) scale(0.98);
+  filter: blur(4px) brightness(0.98);
+  box-shadow: 0 8px 16px 0 rgba(34, 34, 34, 0.08);
+  transition: opacity 1.1s cubic-bezier(0.4, 2, 0.6, 1) 0.25s,
+    transform 1.1s cubic-bezier(0.4, 2, 0.6, 1) 0.25s,
+    filter 1.1s cubic-bezier(0.4, 2, 0.6, 1) 0.25s,
+    box-shadow 1.1s cubic-bezier(0.4, 2, 0.6, 1) 0.25s;
   will-change: opacity, transform, filter, box-shadow;
+  overflow: hidden;
+  position: relative;
+  clip-path: inset(0 0 0 0);
 }
 .footer-fade-up.visible {
   opacity: 1;
   transform: translateY(0) scale(1);
   filter: blur(0) brightness(1);
-  box-shadow: 0 8px 32px 0 rgba(34, 34, 34, 0.08);
+  box-shadow: 0 2px 8px 0 rgba(34, 34, 34, 0.04);
 }
