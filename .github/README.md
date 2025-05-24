@@ -86,6 +86,14 @@ Você pode publicar facilmente no [Vercel](https://vercel.com/), [Netlify](https
 
 ---
 
+## 🖥️ Visualização
+
+Acesse a versão online do projeto:
+
+👉 [https://portfolio-diogoataide.vercel.app](https://machine-shop.vercel.app/)
+
+---
+
 ## 📄 Licença
 
 Este projeto é open-source e pode ser adaptado para uso comercial ou pessoal.  
